@@ -2,6 +2,7 @@ package com.hamitest.shop.data.di.module
 
 import dagger.Module
 import dagger.Provides
+import io.realm.Realm
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -14,5 +15,6 @@ class ApplicationModule {
     fun getUrlBase(): String {
         return "https://woocommerce.maktabsharif.ir/wp-json/wc/v3/"
     }
+
 
 }
