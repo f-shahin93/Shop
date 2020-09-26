@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.Digikala" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/digikala_red_light</item>
+        <item name="colorPrimary">@color/digikala_red_light</item>
+        <item name="colorPrimaryDark">@color/digikala_red_dark</item>
+    </style>
+
+    <style name="MyTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ThemeStatusBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/white</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="Divider.Horizontal" parent="Divider">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">3dp</item> // You can change thickness here.
+    </style>
+
+
+    <style name="seeAll" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textColor">#056DB4</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorLink">#FFFFFF</item>
+        <item name="fontFamily">@font/iran_sans_bold</item>
+    </style>
+
+
+    <style name="Title_List_Product_Home" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/iran_sans_bold</item>
+    </style>
+
+    <style name="actions">
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="bannersTextViewStyle">
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">0.0</item>
+        <item name="android:shadowRadius">10.0</item>
+    </style>
+
+    <style name="Color1SwitchStyle">
+        <item name="android:colorForeground">@color/gray_600</item>
+        <item name="colorControlActivated">@color/digikala_green_light</item>
+        <item name="colorSwitchThumbNormal">@color/gray_600</item>
+    </style>
+
+
+</resources>

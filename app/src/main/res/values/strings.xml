@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Shop</string>
+    <string name="title_home">خانه</string>
+    <string name="title_category">دسته بندی</string>
+    <string name="title_shopping_cart">سبد خرید</string>
+    <string name="title_profile">پروفایل</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="most_sales">پرفروش ترین</string>
+    <string name="price_muchToLow">قیمت از زیاد به کم</string>
+    <string name="price_lowToMuch">قیمت از کم به زیاد</string>
+    <string name="newest">جدیدترین</string>
+    <string name="latest_product">جدیدترین محصولات</string>
+    <string name="see_all">لیست کامل</string>
+    <string name="most_viewed_product">پربازدیدترین محصولات</string>
+
+    <string name="content_description">توضیح محتوا</string>
+    <string name="timer_offers_hours">03</string>
+    <string name="timer_offers_minute">37</string>
+    <string name="timer_offers_second">24</string>
+    <string name="seperator_timer_offers">:</string>
+    <string name="detail_config_product">مشخصات</string>
+    <string name="detail_product_user_comment">نظرات کاربران</string>
+    <string name="sent_fresh">ارسال سریع (سوپرمارکتی)</string>
+    <string name="sent_from_prefix">آماده ارسال از انبار دیجی کالا</string>
+    <string name="fake_alarm">این محصول توسط تولید کننده اصلی (برند) تولید نشده است</string>
+    <string name="counter_saller_garanti_product_detail">1 فروشنده و گارانتی برای این کالا وجود دارد</string>
+    <string name="fake_title_product">غیر اصل</string>
+    <string name="title_warranty">گارانتی 24 ماهه شاهین کالا</string>
+    <string name="tv_title_name_saller">فروش توسط دیجی کالا</string>
+    <string name="myfont">fonts/IRAN_Sans.ttf</string>
+    <string name="search_title">جستجو</string>
+    <string name="title_exist">موجود</string>
+    <string name="title_delete">پاک کردن</string>
+    <string name="title_do_filter">فیلتر کن</string>
+    <string name="filter_from">از</string>
+    <string name="filter_to">تا</string>
+    <string name="tv_title_setting_notify">زمان بندی اطلاع رسانی محصولات جدید</string>
+    <string name="rb_15minute_setting_notify">15 دقیقه</string>
+    <string name="rb_3hour__setting_notify">3 ساعت</string>
+    <string name="rb_5hour__setting_notify">5 ساعت</string>
+    <string name="rb_8hour__setting_notify">8 ساعت</string>
+    <string name="rb_12hour__setting_notify">12 ساعت</string>
+    <string name="rb_setting_custom_time">زمان دلخواه</string>
+    <string name="tv_title_setting_nothing_select">لطفا زمان دلخواه خود را انتخاب نمایید:</string>
+    <string name="title_setting">تنظیمات</string>
+    <string name="title_disable">غیر فعال کردن</string>
+    <string name="channel_id">online_shop_channel_id</string>
+    <string name="channel_name">OnlineShop Channel</string>
+    <string name="title_clock">ساعت</string>
+    <string name="title_gift">هدیه</string>
+    <string name="title_color">رنگ</string>
+    <string name="title_counter">تعداد</string>
+    <string name="title_size">سایز</string>
+    <string name="title_no_user">ثبت نام/ورود</string>
+    <string name="title_all_product_list">مشاهده همه</string>
+    <string name="title_detail">مشاهده کالا</string>
+    <string name="title_sub_category">طبقه بندی جزيیات</string>
+
+</resources>

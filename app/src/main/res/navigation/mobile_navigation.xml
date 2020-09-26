@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.hamitest.shop.presenter.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_detail_product"
+            app:destination="@id/navigation_detail_product" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.hamitest.shop.presenter.category.CategoryFragment"
+        android:label="@string/title_category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/navigation_shopping_cart"
+        android:name="com.hamitest.shop.presenter.shoppingcart.ShoppingCartFragment"
+        android:label="@string/title_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.hamitest.shop.presenter.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_sub_category"
+        android:name="com.hamitest.shop.presenter.category.SubCategoryFragment"
+        android:label="@string/title_sub_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_navigation_sub_category_to_navigation_all_Product_List"
+            app:destination="@id/navigation_all_product_list"
+            app:popUpTo="@id/navigation_all_product_list" >
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:label="@string/title_all_product_list"
+        android:id="@+id/navigation_all_product_list"
+        android:name="com.hamitest.shop.presenter.allProductList.AllProductListFragment"
+        tools:layout="@layout/fragment_all_product_list" >
+
+        <argument
+            android:name="queryMap" />
+
+    </fragment>
+
+    <fragment
+        android:label="@string/title_detail"
+        android:id="@+id/navigation_detail_product"
+        android:name="com.hamitest.shop.presenter.detailproduct.DetailProductFragment"
+        tools:layout="@layout/fragment_detail" >
+
+        <argument
+            android:name="productId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+
+
+</navigation>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView_home_page"
+        android:background="@color/gray_100">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".presenter.home.HomeFragment"
+            android:id="@+id/layout_root_home_page">
+
+            <LinearLayout
+                android:id="@+id/ll_category_home_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:rowCount="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_picApp"
+                app:layout_constraintBottom_toTopOf="@id/const_innerLayout">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycler_view_category_homePage"
+                    android:orientation="horizontal"/>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/const_innerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_category_home_page">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/rec_view_newest_products_list_home"
+                    android:rowCount="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_latest_products"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_view_most_points_products_list_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:rowCount="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_most_points_products"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_view_most_viewed_products_list_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:rowCount="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_most_viewed_products"/>
+
+                <TextView
+                    android:id="@+id/tv_most_viewed_products"
+                    style="@style/Title_List_Product_Home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="2dp"
+                    android:text="@string/most_viewed_product"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rec_view_newest_products_list_home" />
+
+                <TextView
+                    android:id="@+id/tv_see_all_most_viewed_products"
+                    style="@style/seeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:padding="2dp"
+                    android:text="@string/see_all"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_most_viewed_products"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_most_viewed_products" />
+
+
+                <TextView
+                    android:id="@+id/tv_see_all_latest_products"
+                    style="@style/seeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:padding="2dp"
+                    android:text="@string/see_all"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_latest_products"
+                    app:layout_constraintEnd_toEndOf="@+id/rec_view_newest_products_list_home"
+                    app:layout_constraintTop_toTopOf="@+id/tv_latest_products" />
+
+                <TextView
+                    android:id="@+id/tv_most_points_products"
+                    style="@style/Title_List_Product_Home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="2dp"
+                    android:text="بهترین محصولات"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rec_view_most_viewed_products_list_home" />
+
+                <TextView
+                    android:id="@+id/tv_see_all_most_points_products"
+                    style="@style/seeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:padding="2dp"
+                    android:text="@string/see_all"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_most_points_products"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_most_points_products" />
+
+                <TextView
+                    android:id="@+id/tv_latest_products"
+                    style="@style/Title_List_Product_Home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="2dp"
+                    android:text="@string/latest_product"
+                    app:layout_constraintStart_toStartOf="@+id/rec_view_newest_products_list_home"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider_picApp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:background="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
+
