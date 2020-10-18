@@ -1,5 +1,6 @@
 package com.hamitest.shop.presenter.shoppingcart
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,20 +9,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hamitest.shop.MainActivity
 import com.hamitest.shop.R
+import com.hamitest.shop.data.di.module.ViewModelFactory
 import com.hamitest.shop.databinding.FragmentShoppingCartBinding
+import javax.inject.Inject
 
 class ShoppingCartFragment : Fragment() {
 
-    private lateinit var mShoppingCartViewModel: ShoppingCartViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var mShoppingCartViewModel: ShoppingCartViewModel
     private lateinit var mBinding: FragmentShoppingCartBinding
     private lateinit var mShopCartAdapter: ShoppingCartAdapter
     private lateinit var mProductList: List<CartProductItem>
 
     /*
     private TextView mTvTotalPriceOfCartProducts;
-    //private TextView mTvConfirmShopping;
-    pr
      */
 
     companion object {
@@ -35,12 +41,20 @@ class ShoppingCartFragment : Fragment() {
 
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).mainActivitySubComponent.inject(this)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         mShoppingCartViewModel =
-            ViewModelProvider(this).get(ShoppingCartViewModel::class.java)
+            ViewModelProvider(
+                requireActivity(),
+                viewModelFactory
+            ).get(ShoppingCartViewModel::class.java)
 
     }
 
@@ -55,6 +69,9 @@ class ShoppingCartFragment : Fragment() {
 
         mBinding.recyclerViewShoppingCart.layoutManager = LinearLayoutManager(context)
 
+        mBinding.tvConfirmShopping.setOnClickListener{
+
+        }
 
 
         return mBinding.root

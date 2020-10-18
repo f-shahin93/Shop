@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        mainActivitySubComponent = (applicationContext as ShopApplication).applicationComponent.mainActivitySubComponent().create()
+        mainActivitySubComponent = ShopApplication.instance.applicationComponent.mainActivitySubComponent().create()
         mainActivitySubComponent.inject(this)
 
         super.onCreate(savedInstanceState)

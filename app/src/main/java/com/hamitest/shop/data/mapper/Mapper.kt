@@ -2,7 +2,7 @@ package com.hamitest.shop.data.mapper
 
 import com.hamitest.shop.data.model.category.Category
 import com.hamitest.shop.data.model.product.Product
-import com.hamitest.shop.presenter.allProductList.AllProductListItem
+import com.hamitest.shop.presenter.allproductlist.AllProductListItem
 import com.hamitest.shop.presenter.category.SubCategoryItem
 import com.hamitest.shop.presenter.home.ParentCategoryItem
 import com.hamitest.shop.presenter.home.ProductItem

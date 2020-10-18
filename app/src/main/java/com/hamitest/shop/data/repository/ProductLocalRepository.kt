@@ -1,183 +1,188 @@
 package com.hamitest.shop.data.repository
 
+import android.content.Context
+import android.os.AsyncTask
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.hamitest.shop.data.model.product.Product
 import com.hamitest.shop.data.network.ApiService
 import io.realm.Realm
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class ProductLocalRepository @Inject constructor(private var apiService: ApiService) {
 
-    private var productListLiveData : MutableLiveData<List<Product>> = MutableLiveData();
-    private var totalPriceOfCartProductsLiveData : MutableLiveData<Double> = MutableLiveData();
-    private var totalCountProductsCartLiveData : MutableLiveData<Int> = MutableLiveData();
-    private lateinit var realm : Realm
+@Singleton
+class ProductLocalRepository @Inject constructor(
+    private var apiService: ApiService,
+    private var context: Context,
+    private var productRemoteRepository: ProductRemoteRepository
+) {
+
+   // private var productListLiveData: MutableLiveData<List<ProductEntity>>? = MutableLiveData()
+    private var totalPriceOfCartProductsLiveData: MutableLiveData<Double> = MutableLiveData();
+    private var totalCountProductsCartLiveData: MutableLiveData<Int> = MutableLiveData();
+    private var realm = Realm.getDefaultConfiguration()
 
     init {
-        realm = Realm.getDefaultInstance()
+        //realm = Realm.getDefaultInstance()
     }
+
+    fun setProductsListShoppingCart() {
+        val productIdList: MutableList<Int> = ArrayList()
+//        for (shoppingCart in realm.where(ShoppingCartEntity::class.java).findAll()) {
+//            productIdList.add(shoppingCart.getIdProduct())
+//        }
+        //GetProductListAsyncTask().execute(productIdList)
+    }
+
+   /* fun addProductToList(product: ProductEntity) {
+        realm.beginTransaction()
+        if (!addCountProductFromCart(product)) {
+            val shoppingCart: ShoppingCartEntity =
+                realm.createObject(ShoppingCartEntity::class.java, product.id.toString())
+            shoppingCart.idProduct = product.id
+            shoppingCart.countProduct = 1
+        }
+        if (realm.isInTransaction())
+            realm.commitTransaction()
+
+        totalCountProductsCartLiveData.value =
+            realm.where(ShoppingCartEntity::class.java).findAll().size()
+
+        totalPriceOfCartProductsLiveData.value = calculateTotalPriceProductsCart()
+    }*/
+
+
+  /*  private fun addCountProductFromCart(product: ProductEntity): Boolean {
+        if (!realm.isInTransaction())
+            realm.beginTransaction()
+        for (shoppingCart in realm.where(ShoppingCartEntity::class.java).findAll()) {
+            if (shoppingCart.IdProduct === product.id) {
+                if (shoppingCart.getCountProduct() >= 10)
+                    return true
+                shoppingCart.setCountProduct(shoppingCart.getCountProduct() + 1)
+
+                val changeProductList : List<ProductEntity> = productListLiveData.value!!
+                for (changedproduct in changeProductList) {
+                    if (changedproduct.id == product.id) {
+                        if (changedproduct.countProductInCart.value != null)
+                            changedproduct.countProductInCart.value =
+                                changedproduct.countProductInCart.value!! + 1
+                        else
+                            changedproduct.countProductInCart.setValue(1)
+                    }
+                }
+                productListLiveData.setValue(changeProductList)
+                realm.commitTransaction()
+                return true
+            }
+        }
+        return false
+    }*/
+
+   /* private fun calculateTotalPriceProductsCart(): Double? {
+        var numberTotal = 0.0
+        if (productListLiveData?.value != null)
+            for (product in productListLiveData?.value!!) {
+            if (product.countProductInCart.value != null) {
+                if (product.regularPrice == "")
+                    numberTotal += product.countProductInCart.value!! * (product.price.toDouble())
+                else
+                    numberTotal += product.countProductInCart.value!! * product.regularPrice.toDouble()
+            }
+        }
+        return numberTotal
+    }*/
+
+    /*fun deletePruductFromListCart(product: ProductEntity) {
+        if (!realm.isInTransaction())
+            realm.beginTransaction()
+
+        for (shoppingCart in realm.where(ShoppingCartEntity::class.java).findAll()) {
+            if (shoppingCart.IdProduct === product.id) {
+                shoppingCart.deleteFromRealm()
+
+                val changeProductList: MutableList<ProductEntity> = productListLiveData.value!!
+                for (changeProduct in changeProductList) {
+                    if (changeProduct.id == product.id) {
+                        changeProductList.remove(changeProduct)
+                        break
+                    }
+                }
+                productListLiveData?.value = (changeProductList)
+                break
+            }
+        }
+        totalPriceOfCartProductsLiveData.setValue(calculateTotalPriceProductsCart())
+        totalCountProductsCartLiveData.value = realm.where(ShoppingCartEntity::class.java).findAll().size()
+
+        realm.commitTransaction()
+    }*/
+
+    /*fun changingNumOfProductFromCart(product: ProductEntity, countOfProduct: Int) {
+        if (!realm.isInTransaction())
+            realm.beginTransaction()
+
+        for (shoppingCart in realm.where(ShoppingCartEntity::class.java).findAll()) {
+            if (shoppingCart.IdProduct === product.id) {
+                shoppingCart.setCountProduct(countOfProduct)
+
+                val changeProductList: List<ProductEntity> = productListLiveData?.value!!
+                for (changeProduct in changeProductList) {
+                    if (changeProduct.id == product.id) {
+                        changeProduct.countProductInCart.value = (countOfProduct)
+                        break
+                    }
+                }
+                productListLiveData?.setValue(changeProductList)
+                break
+            }
+        }
+        realm.commitTransaction()
+        totalPriceOfCartProductsLiveData.setValue(calculateTotalPriceProductsCart())
+    }*/
+
+    fun getCountCartFromDB() {
+//        totalCountProductsCartLiveData.setValue(
+//            realm.where(ShoppingCartEntity::class.java).findAll().size()
+//        )
+    }
+
+    /*internal class GetProductListAsyncTask :
+        AsyncTask<List<Int?>?, Void?, Void?>() {
+        protected override fun doInBackground(vararg lists: List<Int?>): Void? {
+            mShopFetcher.getProducstListByIdProduct(lists[0])
+            return null
+        }
+
+        override fun onPostExecute(aVoid: Void?) {
+            super.onPostExecute(aVoid)
+            Log.d("TagProduct", "on post execute")
+            val productList: MutableList<ProductEntity> = ArrayList()
+            for (product in mShopFetcher.getProductListShoppingCart()) {
+                for (shoppingCart in realm.where(ShoppingCartEntity::class.java)
+                    .findAll()) {
+                    if (shoppingCart.getIdProduct() === product.id) {
+                        product.getCountProductInCart().postValue(shoppingCart.getCountProduct())
+                        productList.add(product)
+                        break
+                    }
+                }
+            }
+            productListLiveData.postValue(productList)
+            totalCountProductsCartLiveData.postValue(
+                realm.where(ShoppingCartEntity::class.java).findAll().size()
+            )
+            totalPriceOfCartProductsLiveData.postValue(calculateTotalPriceProductsCart())
+        }
+    }*/
+
+
+
 
 }
 
 
-/*
-
-
-
-    private ProductRepository(Context context) {
-        mRealm = Realm.getDefaultInstance();
-        mShopFetcher = ItemShopFetcher.getInstance();
-        mContext = context;
-    }
-
-    public static ProductRepository getInstance(Context context) {
-        if (instance == null) {
-            instance = new ProductRepository(context);
-        }
-        return instance;
-    }
-
-    public void setProductsListShoppingCart() {
-        List<Integer> productIdList = new ArrayList<>();
-
-        for (ShoppingCart shoppingCart : mRealm.where(ShoppingCart.class).findAll()) {
-            productIdList.add(shoppingCart.getIdProduct());
-        }
-
-        new GetProductListAsyncTask().execute(productIdList);
-
-    }
-
-    public void addPruductToList(Product product) {
-        mRealm.beginTransaction();
-        if (!addCountProductFromCart(product)) {
-            ShoppingCart shoppingCart = mRealm.createObject(ShoppingCart.class, String.valueOf(product.getId()));
-            shoppingCart.setIdProduct(product.getId());
-            shoppingCart.setCountProduct(1);
-        }
-
-        if (mRealm.isInTransaction())
-            mRealm.commitTransaction();
-
-        mTotalCountProductsCartLiveData.setValue(mRealm.where(ShoppingCart.class).findAll().size());
-        mTotalPriceOfCartProductsLiveData.setValue(calculateTotalPriceProductsCart());
-    }
-
-    private boolean addCountProductFromCart(Product product) {
-        if (!mRealm.isInTransaction())
-            mRealm.beginTransaction();
-
-        for (ShoppingCart shoppingCart : mRealm.where(ShoppingCart.class).findAll()) {
-            if (shoppingCart.getIdProduct() == product.getId()) {
-                if (shoppingCart.getCountProduct() >= 10)
-                    return true;
-
-                shoppingCart.setCountProduct(shoppingCart.getCountProduct() + 1);
-
-                List<Product> changeProductList = mProductListLiveData.getValue();
-                for (Product changedproduct : changeProductList) {
-                    if (changedproduct.getId() == product.getId()) {
-                        if (changedproduct.getCountProductInCart().getValue() != null)
-                            changedproduct.getCountProductInCart()
-                                    .setValue(changedproduct.getCountProductInCart().getValue() + 1);
-                        else
-                            changedproduct.getCountProductInCart().setValue(1);
-                    }
-                }
-                mProductListLiveData.setValue(changeProductList);
-                mRealm.commitTransaction();
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private Double calculateTotalPriceProductsCart() {
-        double numberTotal = 0;
-        if (mProductListLiveData.getValue() != null)
-            for (Product product : mProductListLiveData.getValue()) {
-                if (product.getCountProductInCart().getValue() != null) {
-                    if (product.getRegularPrice().equals(""))
-                        numberTotal += product.getCountProductInCart().getValue() *
-                                (Double.parseDouble(product.getPrice()));
-                    else
-                        numberTotal += product.getCountProductInCart().getValue() *
-                                (Double.parseDouble(product.getRegularPrice()));
-                }
-            }
-        return numberTotal;
-
-    }
-
-    public void deletePruductFromListCart(Product product) {
-        if (!mRealm.isInTransaction())
-            mRealm.beginTransaction();
-
-        for (ShoppingCart shoppingCart : mRealm.where(ShoppingCart.class).findAll()) {
-            if (shoppingCart.getIdProduct() == product.getId()) {
-                shoppingCart.deleteFromRealm();
-
-                List<Product> changeProductList = mProductListLiveData.getValue();
-                for (Product changeProduct : changeProductList) {
-                    if (changeProduct.getId() == product.getId()) {
-                        changeProductList.remove(changeProduct);
-                        break;
-                    }
-                }
-                mProductListLiveData.setValue(changeProductList);
-                break;
-            }
-        }
-        mTotalPriceOfCartProductsLiveData.setValue(calculateTotalPriceProductsCart());
-        mTotalCountProductsCartLiveData.setValue(mRealm.where(ShoppingCart.class).findAll().size());
-        mRealm.commitTransaction();
-
-    }
-
-    public void changingNumOfProductFromCart(Product product, int countOfProduct) {
-        if (!mRealm.isInTransaction())
-            mRealm.beginTransaction();
-
-        for (ShoppingCart shoppingCart : mRealm.where(ShoppingCart.class).findAll()) {
-            if (shoppingCart.getIdProduct() == product.getId()) {
-                shoppingCart.setCountProduct(countOfProduct);
-
-                List<Product> changeProductList = mProductListLiveData.getValue();
-                for (Product changeProduct : changeProductList) {
-                    if (changeProduct.getId() == product.getId()) {
-                        changeProduct.getCountProductInCart().setValue(countOfProduct);
-                        break;
-                    }
-                }
-                mProductListLiveData.setValue(changeProductList);
-                break;
-            }
-        }
-
-        mRealm.commitTransaction();
-        mTotalPriceOfCartProductsLiveData.setValue(calculateTotalPriceProductsCart());
-    }
-
-    public void getCountCartFromDB() {
-        mTotalCountProductsCartLiveData.setValue(mRealm.where(ShoppingCart.class).findAll().size());
-    }
-
-
-    public MutableLiveData<List<Product>> getProductListLiveData() {
-        return mProductListLiveData;
-    }
-
-    public MutableLiveData<Double> getTotalPriceOfCartProductsLiveData() {
-        return mTotalPriceOfCartProductsLiveData;
-    }
-
-    public MutableLiveData<Integer> getTotalCountProductsCartLiveData() {
-        return mTotalCountProductsCartLiveData;
-    }
-
-    class GetProductListAsyncTask extends AsyncTask<List<Integer>, Void, Void> {
+/*       class GetProductListAsyncTask extends AsyncTask<List<Integer>, Void, Void> {
 
         @Override
         protected Void doInBackground(List<Integer>... lists) {
@@ -206,5 +211,4 @@ class ProductLocalRepository @Inject constructor(private var apiService: ApiServ
             mTotalPriceOfCartProductsLiveData.postValue(calculateTotalPriceProductsCart());
         }
     }
-
  */

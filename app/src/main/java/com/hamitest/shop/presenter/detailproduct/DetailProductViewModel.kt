@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.hamitest.shop.data.model.product.Product
-import com.hamitest.shop.data.repository.ProductRepository
-import com.hamitest.shop.presenter.Utils.ShopConstant
+import com.hamitest.shop.data.repository.ProductRemoteRepository
+import com.hamitest.shop.presenter.utils.ShopConstant
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class DetailProductViewModel @Inject constructor(
-    private val productRepository: ProductRepository
+    private val productRemoteRepository: ProductRemoteRepository
 ) : ViewModel() {
 
     val productMutableLiveData: MutableLiveData<Product> = MutableLiveData()
@@ -29,7 +29,7 @@ class DetailProductViewModel @Inject constructor(
 
     fun getProductLiveData(productId: Int): MutableLiveData<Product> {
         viewModelScope.launch {
-            when (val either = productRepository.getProduct(productId)) {
+            when (val either = productRemoteRepository.getProduct(productId)) {
                 is Either.Right -> productMutableLiveData.value = either.b
                 is Either.Left -> ShopConstant.showError(either.a)
             }

@@ -49,7 +49,7 @@
     <fragment
         android:label="@string/title_all_product_list"
         android:id="@+id/navigation_all_product_list"
-        android:name="com.hamitest.shop.presenter.allProductList.AllProductListFragment"
+        android:name="com.hamitest.shop.presenter.allproductlist.AllProductListFragment"
         tools:layout="@layout/fragment_all_product_list" >
 
         <argument

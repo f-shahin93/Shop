@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +21,7 @@ import com.hamitest.shop.MainActivity
 import com.hamitest.shop.R
 import com.hamitest.shop.data.di.module.ViewModelFactory
 import com.hamitest.shop.databinding.FragmentHomeBinding
-import com.hamitest.shop.presenter.allProductList.AllProductListFragment
+import com.hamitest.shop.presenter.allproductlist.AllProductListFragment
 import javax.inject.Inject
 
 class HomeFragment : Fragment(), ProductHpAdapter.CreateFragmentCallBackHomeToDetail {
@@ -59,7 +58,6 @@ class HomeFragment : Fragment(), ProductHpAdapter.CreateFragmentCallBackHomeToDe
 
         activity?.window?.decorView?.layoutDirection = View.LAYOUT_DIRECTION_RTL
 
-        //mHomeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
         mHomeViewModel = ViewModelProvider(requireActivity(),viewModelFactory).get(HomeViewModel::class.java)
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)

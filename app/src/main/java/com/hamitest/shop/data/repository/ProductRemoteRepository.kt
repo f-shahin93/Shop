@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProductRepository @Inject constructor(
+class ProductRemoteRepository @Inject constructor(
     private val apiService: ApiService,
     errorMapper: ErrorMapper = ErrorMapper(HttpErrorMapper())
 ) : BaseRepository(errorMapper) {

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hamitest.shop.MainActivity
 import com.hamitest.shop.R
 import com.hamitest.shop.data.di.module.ViewModelFactory
-import com.hamitest.shop.presenter.allProductList.AllProductListFragment
+import com.hamitest.shop.presenter.allproductlist.AllProductListFragment
 import javax.inject.Inject
 
 

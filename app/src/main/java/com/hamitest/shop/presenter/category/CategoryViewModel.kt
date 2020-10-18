@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.hamitest.shop.data.mapper.Mapper
-import com.hamitest.shop.data.repository.ProductRepository
-import com.hamitest.shop.presenter.Utils.ShopConstant
+import com.hamitest.shop.data.repository.ProductRemoteRepository
+import com.hamitest.shop.presenter.utils.ShopConstant
 import com.hamitest.shop.presenter.home.ParentCategoryItem
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
+    private val productRemoteRepository: ProductRemoteRepository,
     var mapper: Mapper
 ) : ViewModel() {
 
@@ -22,7 +22,7 @@ class CategoryViewModel @Inject constructor(
         val parentCategoriesListLiveData = MutableLiveData<List<ParentCategoryItem>>()
 
         viewModelScope.launch {
-            when (val either = productRepository.getAllCategory()) {
+            when (val either = productRemoteRepository.getAllCategory()) {
                 is Either.Right -> {
                     for (i in either.b) {
                         if (i.parent.equals(0)) {
@@ -43,7 +43,7 @@ class CategoryViewModel @Inject constructor(
         var subCategoriesListLiveData = MutableLiveData<List<SubCategoryItem>>()
 
         viewModelScope.launch {
-            when (val either = productRepository.getAllCategory()) {
+            when (val either = productRemoteRepository.getAllCategory()) {
                 is Either.Right -> {
                     for (i in either.b) {
                         if (i.parent.equals(idParent)) {

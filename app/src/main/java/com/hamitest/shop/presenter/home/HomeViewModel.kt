@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.hamitest.shop.data.mapper.Mapper
-import com.hamitest.shop.data.repository.ProductRepository
-import com.hamitest.shop.presenter.Utils.ShopConstant
+import com.hamitest.shop.data.repository.ProductRemoteRepository
+import com.hamitest.shop.presenter.utils.ShopConstant
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class HomeViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
+    private val productRemoteRepository: ProductRemoteRepository,
     private val mapper: Mapper
 ) : ViewModel() {
 
@@ -31,7 +31,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
 
             launch {
-                when (val either = productRepository.getCategory("default", 0)) {
+                when (val either = productRemoteRepository.getCategory("default", 0)) {
                     is Either.Right -> mParentCategoriesListLiveData.value =
                         mapper.mapToCategoryItemList(either.b)
                     is Either.Left -> ShopConstant.showError(either.a)
@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(
             }
 
             launch {
-                when (val either = productRepository.getProducts("date")) {
+                when (val either = productRemoteRepository.getProducts("date")) {
                     is Either.Right -> mListNewestProMutableLiveData.value =
                         mapper.mapToProductItemList(either.b)
                     is Either.Left -> ShopConstant.showError(either.a)
@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(
             }
 
             launch {
-                when (val either = productRepository.getProducts("popularity")) {
+                when (val either = productRemoteRepository.getProducts("popularity")) {
                     is Either.Right -> mListPopularProMutableLiveData.value =
                         mapper.mapToProductItemList(either.b)
                     is Either.Left -> ShopConstant.showError(either.a)
@@ -55,7 +55,7 @@ class HomeViewModel @Inject constructor(
             }
 
             launch {
-                when (val either = productRepository.getProducts("rating")) {
+                when (val either = productRemoteRepository.getProducts("rating")) {
                     is Either.Right -> mListMostPointProMutableLiveData.value =
                         mapper.mapToProductItemList(either.b)
                     is Either.Left -> ShopConstant.showError(either.a)
@@ -68,7 +68,7 @@ class HomeViewModel @Inject constructor(
 
     fun getAllCategories() {
         viewModelScope.launch {
-            productRepository.getAllCategory()
+            productRemoteRepository.getAllCategory()
         }
     }
 

@@ -1,4 +1,4 @@
-package com.hamitest.shop.presenter.allProductList
+package com.hamitest.shop.presenter.allproductlist
 
 import android.content.Context
 import android.graphics.Paint

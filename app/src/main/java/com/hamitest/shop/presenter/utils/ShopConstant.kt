@@ -1,4 +1,4 @@
-package com.hamitest.shop.presenter.Utils
+package com.hamitest.shop.presenter.utils
 
 import android.util.Log
 import javax.inject.Inject

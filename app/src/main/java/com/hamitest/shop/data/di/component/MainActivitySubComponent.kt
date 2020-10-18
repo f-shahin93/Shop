@@ -1,7 +1,7 @@
 package com.hamitest.shop.data.di.component
 
 import com.hamitest.shop.MainActivity
-import com.hamitest.shop.presenter.allProductList.AllProductListFragment
+import com.hamitest.shop.presenter.allproductlist.AllProductListFragment
 import com.hamitest.shop.presenter.category.CategoryFragment
 import com.hamitest.shop.presenter.category.SubCategoryFragment
 import com.hamitest.shop.presenter.detailproduct.DetailProductFragment

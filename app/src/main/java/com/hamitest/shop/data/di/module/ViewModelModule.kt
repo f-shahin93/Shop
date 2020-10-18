@@ -1,7 +1,7 @@
 package com.hamitest.shop.data.di.module
 
 import androidx.lifecycle.ViewModel
-import com.hamitest.shop.presenter.allProductList.AllProductListViewModel
+import com.hamitest.shop.presenter.allproductlist.AllProductListViewModel
 import com.hamitest.shop.presenter.category.CategoryViewModel
 import com.hamitest.shop.presenter.detailproduct.DetailProductViewModel
 import com.hamitest.shop.presenter.home.HomeViewModel

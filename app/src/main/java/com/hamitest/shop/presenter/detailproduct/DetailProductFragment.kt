@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.daimajia.slider.library.SliderLayout
 import com.daimajia.slider.library.SliderTypes.BaseSliderView
 import com.daimajia.slider.library.SliderTypes.TextSliderView
@@ -23,8 +22,6 @@ import com.hamitest.shop.data.di.module.ViewModelFactory
 import com.hamitest.shop.data.model.product.Attribute
 import com.hamitest.shop.data.model.product.Product
 import com.hamitest.shop.databinding.FragmentDetailBinding
-import com.hamitest.shop.presenter.allProductList.AllProductListFragment
-import com.hamitest.shop.presenter.home.HomeViewModel
 import javax.inject.Inject
 
 

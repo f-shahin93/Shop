@@ -1,4 +1,4 @@
-package com.hamitest.shop.presenter.allProductList
+package com.hamitest.shop.presenter.allproductlist
 
 import com.hamitest.shop.data.model.product.ProductImage
 

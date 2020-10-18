@@ -8,9 +8,14 @@ import io.realm.RealmConfiguration
 
 class ShopApplication : Application() {
 
+    companion object {
+        lateinit var instance: ShopApplication
+    }
+
     lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
+        instance = this
         super.onCreate()
 
         applicationComponent = DaggerApplicationComponent
